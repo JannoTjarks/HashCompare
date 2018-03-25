@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 namespace HashCompare
 {
     // author: Janno Tjarks (janno.tjarks@hotmail.de)
-    // version: Alpha 1.0
+    // version: Alpha 1.1
     // date: 25.03.2018
 
     class Program
@@ -13,100 +13,141 @@ namespace HashCompare
         // Main-method
         static void Main(string[] args)
         {
-            // Greeting
-            Console.WriteLine("Moin!");
+            // Write Greeting
+            Greeting();
 
-            // Hash from the website
-            Console.WriteLine("Hash der Download-Seite");
-            var websiteHash = Console.ReadLine();
-            websiteHash = websiteHash.Replace(" ", "");
+            // Get Hash from the website
+            var websiteHash = GetHashFromWebsite();
 
             // Reading the file
+            var fileStream = GetFileStream();
+
+            // Get Hash from File
+            var fileHash = GetHashFromFile(fileStream);
+
+            // Show result of comparison
+            ResultOfComparison(websiteHash, fileHash);
+
+            // Close the application
+            Close();
+        }
+
+        private static void Greeting()
+        {
+            var greeting = "Moin!";
+            Console.WriteLine("{0}", greeting);
+        }
+
+        // Read the Hash from the website and removed the blank
+        private static string GetHashFromWebsite()
+        {
+            var giveHash = "Wie lautet der Hashwert, den die Download-Seite nennt?";
+            Console.WriteLine("{0}", giveHash);
+            var websiteHash = Console.ReadLine();
+            return websiteHash.Replace(" ", "");
+        }
+
+        private static FileStream GetFileStream()
+        {
             FileStream fileStream = null;
-            Console.WriteLine("Geben sie den Dateipfad ein:");
+            var givePath = "Geben sie den Dateipfad ein:";
+            Console.WriteLine("{0}", givePath);
             var fileReadable = false;
             while (!fileReadable)
             {
                 try
                 {
-                    var path = Console.ReadLine();
+                    var path = String.Empty;
+                    path = Console.ReadLine();
+
                     var file = new FileInfo(path);
                     fileStream = file.Open(FileMode.Open);
                     fileReadable = true;
                 }
                 catch
                 {
-                    Console.WriteLine("Es konnte nicht auf die Datei zugegriffen werden!" +
-                        "\n Geben sie den Dataipfad erneut ein:");
+                    var readError = "Es konnte nicht auf die Datei zugegriffen werden!" +
+                        "\nGeben sie den Dataipfad erneut ein:";
+                    Console.WriteLine("{0}", readError);
                 }
             }
 
-            // Chose hash-method
-            Console.WriteLine("Welches Hashverfahren soll angewendet werden? (SHA-1, SHA-256, SHA-384, SHA-512)");
-            var method = Console.ReadLine();
+            return fileStream;
+        }
 
+        private static string GetHashFromFile(FileStream fileStream)
+        {
             // Check the hash-method input and hash
+            var giveHash = "Um welches Hashverfahren handelt es sich? (SHA-1, SHA-256, SHA-384, SHA-512)";
+            Console.WriteLine("{0}", giveHash);
             var hash = String.Empty;
             var correctMethod = false;
             while (!correctMethod)
-            {
+            {   
+                var method = Console.ReadLine();
                 switch (method.Replace(" ", ""))
                 {
                     case "SHA-1":
-                        hash = ByteArrayToString(Hash.StreamToHash(new SHA1Managed(), fileStream));
+                        hash = Hash.StreamToHash(new SHA1Managed(), fileStream);
                         correctMethod = true;
                         break;
                     case "SHA-256":
-                        hash = ByteArrayToString(Hash.StreamToHash(new SHA256Managed(), fileStream));
+                        hash = Hash.StreamToHash(new SHA256Managed(), fileStream);
                         correctMethod = true;
                         break;
                     case "SHA-384":
-                        hash = ByteArrayToString(Hash.StreamToHash(new SHA384Managed(), fileStream));
+                        hash = Hash.StreamToHash(new SHA384Managed(), fileStream);
                         correctMethod = true;
                         break;
                     case "SHA-512":
-                        hash = ByteArrayToString(Hash.StreamToHash(new SHA512Managed(), fileStream));
+                        hash = Hash.StreamToHash(new SHA512Managed(), fileStream);
                         correctMethod = true;
                         break;
                     default:
                         break;
                 }
-
+                
                 if (hash != String.Empty)
                 {
-                    fileStream.Dispose();
                     correctMethod = true;
                 }
                 else
                 {
-                    Console.WriteLine("Eingabe des Hash-Types ist fehlerhaft. Bitte nochmal eingeben! " +
-                        "\n(SHA-1, SHA-256, SHA-384, SHA-512)");
+                    var hashError = "Eingabe des Hash-Types ist fehlerhaft. Bitte nochmal eingeben! " +
+                        "\n(SHA-1, SHA-256, SHA-384, SHA-512)";
+                    Console.WriteLine("{0}", hashError);
                 }
             }
 
-            // Comparison
-            if (hash == websiteHash)
+            return hash;
+        }
+
+        private static void ResultOfComparison(string websiteHash, string fileHash)
+        {
+            var resultBegin = "Die Strings sind ";
+            Console.Write("{0}", resultBegin);
+            var resultEnd = String.Empty;
+            if (websiteHash == fileHash)
             {
-                Console.WriteLine("Die Strings sind identisch!");
+                resultEnd = "identisch!";
+                Console.ForegroundColor = ConsoleColor.Green;
             }
             else
             {
-                Console.WriteLine("Die Strings sind unterschiedlich!");
+                resultEnd = "unterschiedlich!";
+                Console.ForegroundColor = ConsoleColor.Red;
             }
 
-            Console.ReadKey();
+            Console.WriteLine("{0}", resultEnd);
+            Console.ResetColor();
+
         }
 
-        // Convert a byte-array to a string with lowercase
-        private static string ByteArrayToString(byte[] array)
+        private static void Close()
         {
-            var hash = String.Empty;
-            for (int i = 0; i < array.Length; i++)
-            {
-                hash += (String.Format("{0:X2}", array[i]));
-            }
-
-            return hash.ToLower(); ;
+            var close = "Beliebige Taste zum Beenden...";
+            Console.WriteLine("{0}", close);
+            Console.ReadKey(true);
         }
     }
 }
