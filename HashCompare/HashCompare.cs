@@ -1,18 +1,25 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography;
+using HashCompare.Language;
 
 namespace HashCompare
 {
     // author: Janno Tjarks (janno.tjarks@hotmail.de)
-    // version: Alpha 1.1
-    // date: 25.03.2018
+    // version: Alpha 1.2
+    // date: 01.04.2018
 
-    class Program
+    class HashCompare
     {
+        // Declaration Language
+        private static LanguageSelect language = null;     
+
         // Main-method
         static void Main(string[] args)
         {
+            // Get Language
+            GetLanguage(args);
+            
             // Write Greeting
             Greeting();
 
@@ -32,17 +39,30 @@ namespace HashCompare
             Close();
         }
 
+        private static void GetLanguage(string[] args)
+        {
+            // Check arguments
+            if (args.Length == 1)
+            {
+                language = LanguageRead.Read(args[0]);
+            }
+            else
+            {
+                language = LanguageRead.Read(null);
+            }
+        }
+
         private static void Greeting()
         {
-            var greeting = "Moin!";
-            Console.WriteLine("{0}", greeting);
+            // var greeting = "Moin!";
+            Console.WriteLine("{0}", language.Greeting);
         }
 
         // Read the Hash from the website and removed the blank
         private static string GetHashFromWebsite()
         {
-            var giveHash = "Wie lautet der Hashwert, den die Download-Seite nennt?";
-            Console.WriteLine("{0}", giveHash);
+            //var giveHash = "Wie lautet der Hashwert, den die Download-Seite nennt?";
+            Console.WriteLine("{0}", language.GiveHash);
             var websiteHash = Console.ReadLine();
             return websiteHash.Replace(" ", "");
         }
@@ -50,8 +70,7 @@ namespace HashCompare
         private static FileStream GetFileStream()
         {
             FileStream fileStream = null;
-            var givePath = "Geben sie den Dateipfad ein:";
-            Console.WriteLine("{0}", givePath);
+            Console.WriteLine("{0}", language.GivePath);
             var fileReadable = false;
             while (!fileReadable)
             {
@@ -66,9 +85,7 @@ namespace HashCompare
                 }
                 catch
                 {
-                    var readError = "Es konnte nicht auf die Datei zugegriffen werden!" +
-                        "\nGeben sie den Dataipfad erneut ein:";
-                    Console.WriteLine("{0}", readError);
+                    Console.WriteLine("{0}", language.PathError);
                 }
             }
 
@@ -77,9 +94,7 @@ namespace HashCompare
 
         private static string GetHashFromFile(FileStream fileStream)
         {
-            // Check the hash-method input and hash
-            var giveHash = "Um welches Hashverfahren handelt es sich? (SHA-1, SHA-256, SHA-384, SHA-512)";
-            Console.WriteLine("{0}", giveHash);
+            Console.WriteLine("{0}", language.GiveHashMethod);
             var hash = String.Empty;
             var correctMethod = false;
             while (!correctMethod)
@@ -113,9 +128,7 @@ namespace HashCompare
                 }
                 else
                 {
-                    var hashError = "Eingabe des Hash-Types ist fehlerhaft. Bitte nochmal eingeben! " +
-                        "\n(SHA-1, SHA-256, SHA-384, SHA-512)";
-                    Console.WriteLine("{0}", hashError);
+                    Console.WriteLine("{0}", language.HashError);
                 }
             }
 
@@ -124,17 +137,16 @@ namespace HashCompare
 
         private static void ResultOfComparison(string websiteHash, string fileHash)
         {
-            var resultBegin = "Die Strings sind ";
-            Console.Write("{0}", resultBegin);
+            Console.Write("{0}", language.ResultBegin);
             var resultEnd = String.Empty;
             if (websiteHash == fileHash)
             {
-                resultEnd = "identisch!";
+                resultEnd = language.ResultEndPositiv;
                 Console.ForegroundColor = ConsoleColor.Green;
             }
             else
             {
-                resultEnd = "unterschiedlich!";
+                resultEnd = language.ResultEndNegativ;
                 Console.ForegroundColor = ConsoleColor.Red;
             }
 
