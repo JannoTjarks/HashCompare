@@ -2,10 +2,10 @@
 #### What is HashCompare? (English)
 
 HashCompare is a console application that can compare checksums to ensure the integrity of data. 
-![](https://github.com/JannoTjarks/HashCompare/tree/master/HashCompare/readme/en.png)
+![](https://raw.githubusercontent.com/JannoTjarks/HashCompare/master/readme/en.png)
 The application was optimized for the operating systems Linux, MacOS and Windows. It requires .NET Core to be installed in the system.
 There are currently three language packs available:
-- German
+- English
 - German
 - Low German
 
@@ -17,10 +17,10 @@ To run HashCompare you first need to download the #Builds folder from Github. A 
 > dotnet HashCompare.dll
 
 With the help of a parameter a language package can be selected.
-> // German
-dotnet HashCompare.dll de
-// English
+> // English
 dotnet HashCompare.dll en
+// German
+dotnet HashCompare.dll de
 // Low German
 dotnet HashCompare.dll platt
 
@@ -34,21 +34,21 @@ Licensed under the Apache 2.0 License.
 
 #### Was ist HashCompare? (Deutsch)
 
-HashCompare ist eine Konsolenanwendung mit der Checksummen verglichen werden k�nnen, um die Integrit�t der Daten sicherzustellen. 
-![](https://github.com/JannoTjarks/HashCompare/tree/master/HashCompare/readme/de.png)
-Optimiert wurde die Anwendung f�r die Betriebssysteme Linux, MacOS und Windows. Hierf�r muss .NET Core im System installiert sein. 
+HashCompare ist eine Konsolenanwendung mit der Checksummen verglichen werden können, um die Integrität der Daten sicherzustellen. 
+![](https://raw.githubusercontent.com/JannoTjarks/HashCompare/master/readme/de.png)
+Optimiert wurde die Anwendung f�r die Betriebssysteme Linux, MacOS und Windows. Hierfür muss .NET Core im System installiert sein. 
 Zurzeit stehen drei Sprachpakette zur Verf�gung:
 - Englisch
 - Deutsch
 - Plattdeutsch
 
-Zur Auswahl des Sprachpakettes siehe "Ausf�hren".
+Zur Auswahl des Sprachpakettes siehe "Ausführen".
 
 #### Ausf�hren
-Um HashCompare auszuf�hren m�ssen Sie zuerst der #Builds-Ordner aus Github heruntergeladen werden. Darauhin muss die Konsole in dem heruntergeladenen Ordner ausgef�hrt werden. Dann kann �ber den folgenden Konsolenbefehl die Anwendung gestartet werden.
+Um HashCompare auszuführen müssen Sie zuerst den #Builds-Ordner aus Github heruntergeladen. Darauhin muss die Konsole in dem heruntergeladenen Ordner ausgeführt werden. Dann kann über den folgenden Konsolenbefehl die Anwendung gestartet werden.
 >dotnet HashCompare.dll
 
-Mit Hilfe eines Parameters kann ein Sprachpaket gew�hlt werden.
+Mit Hilfe eines Parameters kann ein Sprachpaket gewählt werden.
 >// Deutsch
 dotnet HashCompare.dll de
 // Englisch
