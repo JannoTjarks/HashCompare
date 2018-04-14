@@ -6,20 +6,26 @@ using HashCompare.Language;
 namespace HashCompare
 {
     // author: Janno Tjarks (janno.tjarks@hotmail.de)
-    // version: Alpha 1.2
-    // date: 01.04.2018
-
-    class HashCompare
+    // version: 1.0
+    // date: 2018-04-14
+    /// <summary>
+    /// This is the main class and performs all inputs and outputs.
+    /// </summary>
+    public class HashCompare
     {
-        // Declaration Language
-        private static LanguageSelect language = null;     
+        #region private variables
+        // Declaration Language        
+        private static LanguageSelected language = null;
 
+        #endregion
+
+        #region methods
         // Main-method
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Get Language
             GetLanguage(args);
-            
+
             // Write Greeting
             Greeting();
 
@@ -39,8 +45,9 @@ namespace HashCompare
             Close();
         }
 
+        // Reads the start arguments and loads a language package
         private static void GetLanguage(string[] args)
-        {
+        {            
             // Check arguments
             if (args.Length == 1)
             {
@@ -52,21 +59,22 @@ namespace HashCompare
             }
         }
 
+        // Writes a greeting
         private static void Greeting()
         {
-            // var greeting = "Moin!";
             Console.WriteLine("{0}", language.Greeting);
         }
 
-        // Read the Hash from the website and removed the blank
+        // Reads the Hash from the website and removes the blank
         private static string GetHashFromWebsite()
         {
-            //var giveHash = "Wie lautet der Hashwert, den die Download-Seite nennt?";
-            Console.WriteLine("{0}", language.GiveHash);
+            Console.WriteLine("\n{0}", language.GiveHash);
             var websiteHash = Console.ReadLine();
+            Console.Write("\n");
             return websiteHash.Replace(" ", "");
         }
 
+        // Reads the filepath and creates a filestream
         private static FileStream GetFileStream()
         {
             FileStream fileStream = null;
@@ -82,61 +90,71 @@ namespace HashCompare
                     var file = new FileInfo(path);
                     fileStream = file.Open(FileMode.Open);
                     fileReadable = true;
+                    Console.Write("\n");
                 }
                 catch
                 {
-                    Console.WriteLine("{0}", language.PathError);
+                    Console.WriteLine("\n{0}", language.PathError);
                 }
-            }
+            }            
 
             return fileStream;
         }
 
+        // Reads hash method and returns the hash as string
         private static string GetHashFromFile(FileStream fileStream)
         {
             Console.WriteLine("{0}", language.GiveHashMethod);
             var hash = String.Empty;
             var correctMethod = false;
             while (!correctMethod)
-            {   
+            {
                 var method = Console.ReadLine();
                 switch (method.Replace(" ", ""))
                 {
+                    case "MD5":
+                        hash = Hash.StreamToHash(MD5.Create(), fileStream);
+                        correctMethod = true;
+                        break;
                     case "SHA-1":
-                        hash = Hash.StreamToHash(new SHA1Managed(), fileStream);
+                        hash = Hash.StreamToHash(SHA1.Create(), fileStream);
                         correctMethod = true;
                         break;
                     case "SHA-256":
-                        hash = Hash.StreamToHash(new SHA256Managed(), fileStream);
+                        hash = Hash.StreamToHash(SHA256.Create(), fileStream);
                         correctMethod = true;
                         break;
                     case "SHA-384":
-                        hash = Hash.StreamToHash(new SHA384Managed(), fileStream);
+                        hash = Hash.StreamToHash(SHA384.Create(), fileStream);
                         correctMethod = true;
                         break;
                     case "SHA-512":
-                        hash = Hash.StreamToHash(new SHA512Managed(), fileStream);
+                        hash = Hash.StreamToHash(SHA512.Create(), fileStream);
                         correctMethod = true;
                         break;
                     default:
                         break;
                 }
-                
+
                 if (hash != String.Empty)
                 {
                     correctMethod = true;
+                    Console.Write("\n");
                 }
                 else
                 {
-                    Console.WriteLine("{0}", language.HashError);
+                    Console.WriteLine("\n{0}", language.HashError);
                 }
             }
 
             return hash;
         }
 
+        // Compares the hash with the string from the website 
         private static void ResultOfComparison(string websiteHash, string fileHash)
         {
+            Console.WriteLine("{0}:\t{1}\n{2}:\t{3}\n", language.WebsitheHash, websiteHash,
+                language.FileHash, fileHash);
             Console.Write("{0}", language.ResultBegin);
             var resultEnd = String.Empty;
             if (websiteHash == fileHash)
@@ -155,11 +173,13 @@ namespace HashCompare
 
         }
 
+        // Waits for a key and closes the application then. 
         private static void Close()
         {
-            var close = "Beliebige Taste zum Beenden...";
-            Console.WriteLine("{0}", close);
+            Console.WriteLine("\n{0}", language.Close);
             Console.ReadKey(true);
         }
+
+        #endregion
     }
 }

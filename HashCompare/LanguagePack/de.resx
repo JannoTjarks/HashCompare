@@ -120,11 +120,14 @@
   <data name="Close" xml:space="preserve">
     <value>Beliebige Taste zum Beenden...</value>
   </data>
+  <data name="FileHash" xml:space="preserve">
+    <value>Hash von der Datei</value>
+  </data>
   <data name="GiveHash" xml:space="preserve">
     <value>Wie lautet der Hashwert, den die Download-Seite nennt?</value>
   </data>
   <data name="GiveHashMethod" xml:space="preserve">
-    <value>Um welches Hashverfahren handelt es sich? (SHA-1, SHA-256, SHA-384, SHA-512)</value>
+    <value>Um welches Hashverfahren handelt es sich? (MD5, SHA-1, SHA-256, SHA-384, SHA-512)</value>
   </data>
   <data name="GivePath" xml:space="preserve">
     <value>Geben sie den Dateipfad ein:</value>
@@ -139,12 +142,15 @@
     <value>Es konnte nicht auf die Datei zugegriffen werden! Geben sie den Dataipfad erneut ein:</value>
   </data>
   <data name="ResultBegin" xml:space="preserve">
-    <value>Die Strings sind </value>
+    <value>Die Hashes sind </value>
   </data>
   <data name="ResultEndNegativ" xml:space="preserve">
-    <value>unterschiedlich</value>
+    <value>unterschiedlich!</value>
   </data>
   <data name="ResultEndPositiv" xml:space="preserve">
-    <value>identisch</value>
+    <value>identisch!</value>
+  </data>
+  <data name="WebsiteHash" xml:space="preserve">
+    <value>Hash von der Webseite</value>
   </data>
 </root>

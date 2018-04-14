@@ -70,6 +70,15 @@ namespace HashCompare.LanguagePack {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Hash von der Datei ähnelt.
+        /// </summary>
+        public static string FileHash {
+            get {
+                return ResourceManager.GetString("FileHash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Wie lautet der Hashwert, den die Download-Seite nennt? ähnelt.
         /// </summary>
         public static string GiveHash {
@@ -79,7 +88,7 @@ namespace HashCompare.LanguagePack {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Um welches Hashverfahren handelt es sich? (SHA-1, SHA-256, SHA-384, SHA-512) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Um welches Hashverfahren handelt es sich? (MD5, SHA-1, SHA-256, SHA-384, SHA-512) ähnelt.
         /// </summary>
         public static string GiveHashMethod {
             get {
@@ -124,7 +133,7 @@ namespace HashCompare.LanguagePack {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Die Strings sind  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die Hashes sind  ähnelt.
         /// </summary>
         public static string ResultBegin {
             get {
@@ -133,7 +142,7 @@ namespace HashCompare.LanguagePack {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die unterschiedlich ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die unterschiedlich! ähnelt.
         /// </summary>
         public static string ResultEndNegativ {
             get {
@@ -142,11 +151,20 @@ namespace HashCompare.LanguagePack {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die identisch ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die identisch! ähnelt.
         /// </summary>
         public static string ResultEndPositiv {
             get {
                 return ResourceManager.GetString("ResultEndPositiv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Hash von der Webseite ähnelt.
+        /// </summary>
+        public static string WebsiteHash {
+            get {
+                return ResourceManager.GetString("WebsiteHash", resourceCulture);
             }
         }
     }

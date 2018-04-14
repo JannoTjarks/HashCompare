@@ -118,39 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Close" xml:space="preserve">
-    <value>Press any key to exit...</value>
+    <value>Drück enn van all de Knopen up Tastbreed um uptohollen...</value>
   </data>
   <data name="FileHash" xml:space="preserve">
-    <value>Hash of the file</value>
+    <value>Hash van de Datei</value>
   </data>
   <data name="GiveHash" xml:space="preserve">
-    <value>What's the Hash-Value that the download-site is calling?</value>
+    <value>Wat is de Hash von de Internet-Sied?</value>
   </data>
   <data name="GiveHashMethod" xml:space="preserve">
-    <value>Which hash-method do you want? (MD5, SHA-1, SHA-256, SHA-384, SHA-512)</value>
+    <value>Wat för een Hash-Methood brukst du? (MD5, SHA-1, SHA-256, SHA-384, SHA-512)</value>
   </data>
   <data name="GivePath" xml:space="preserve">
-    <value>Give the path to the software:</value>
+    <value>Wo liggt de Datei?</value>
   </data>
   <data name="Greeting" xml:space="preserve">
-    <value>Hi!</value>
+    <value>Moin!</value>
   </data>
   <data name="HashError" xml:space="preserve">
-    <value>The hash-input was faulty. Pls type it in again! (SHA-1, SHA-256, SHA-384, SHA-512)</value>
+    <value>Daar is woll ein Malöör passiert. Gev de Method gliek noch maal an! (MD5, SHA-1, SHA-256, SHA-384, SHA-512)</value>
   </data>
   <data name="PathError" xml:space="preserve">
-    <value>Path can't be read. Please input the path again!</value>
+    <value>Daar is woll ein Versehn passiert. Mak dat gliek noch maal!</value>
   </data>
   <data name="ResultBegin" xml:space="preserve">
-    <value>The hashs are </value>
+    <value>De Hashes sünd </value>
   </data>
   <data name="ResultEndNegativ" xml:space="preserve">
-    <value>differently!</value>
+    <value>verscheden!</value>
   </data>
   <data name="ResultEndPositiv" xml:space="preserve">
-    <value>identical!</value>
+    <value>gliek!</value>
   </data>
   <data name="WebsiteHash" xml:space="preserve">
-    <value>Hash from the website</value>
+    <value>Hash ut de Internet</value>
   </data>
 </root>
