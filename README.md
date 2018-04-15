@@ -15,7 +15,7 @@ To select the language package, see "Execute".
 
 #### Execute
 
-To run HashCompare you first need to download the #Builds folder from Github. A console must be running in the downloaded folder, then the application can be started via the following console command.
+First you need to download the #Builds folder from Github to run HashCompare. A console must be running in the downloaded folder, then the application can be started via the following console command.
 > dotnet HashCompare.dll
 
 With the help of a parameter a language package can be selected.
@@ -46,7 +46,7 @@ Zurzeit stehen drei Sprachpakette zur Verfügung:
 Zur Auswahl des Sprachpakettes siehe "Ausführen".
 
 #### Ausführen
-Um HashCompare auszuführen müssen Sie zuerst den #Builds-Ordner aus Github heruntergeladen. Darauhin muss die Konsole in dem heruntergeladenen Ordner ausgeführt werden. Dann kann über den folgenden Konsolenbefehl die Anwendung gestartet werden.
+Um HashCompare auszuführen, müssen Sie zuerst den #Builds-Ordner aus Github heruntergeladen. Darauhin muss eine Konsole in dem heruntergeladenen Ordner ausgeführt werden. Dann kann über den folgenden Konsolenbefehl die Anwendung gestartet werden.
 >dotnet HashCompare.dll
 
 Mit Hilfe eines Parameters kann ein Sprachpaket gewählt werden.
