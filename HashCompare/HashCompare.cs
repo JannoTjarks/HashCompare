@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography;
-using HashCompare.Language;
+using HashCompare.LanguageSelection;
 
 namespace HashCompare
 {
@@ -13,9 +13,9 @@ namespace HashCompare
     /// </summary>
     public class HashCompare
     {
-        #region private variables
+        #region private variables        
         // Declaration Language        
-        private static LanguageSelected language = null;
+        private static Language language = null;
 
         #endregion
 
@@ -27,7 +27,7 @@ namespace HashCompare
             GetLanguage(args);
 
             // Write Greeting
-            Greeting();
+            Greet();
 
             // Get Hash from the website
             var websiteHash = GetHashFromWebsite();
@@ -39,7 +39,7 @@ namespace HashCompare
             var fileHash = GetHashFromFile(fileStream);
 
             // Show result of comparison
-            ResultOfComparison(websiteHash, fileHash);
+            CompareTheResult(websiteHash, fileHash);
 
             // Close the application
             Close();
@@ -51,16 +51,16 @@ namespace HashCompare
             // Check arguments
             if (args.Length == 1)
             {
-                language = LanguageRead.Read(args[0]);
+                language = LanguageReader.Read(args[0]);
             }
             else
             {
-                language = LanguageRead.Read(null);
+                language = LanguageReader.Read(null);
             }
         }
 
         // Writes a greeting
-        private static void Greeting()
+        private static void Greet()
         {
             Console.WriteLine("{0}", language.Greeting);
         }
@@ -71,12 +71,13 @@ namespace HashCompare
             Console.WriteLine("\n{0}", language.GiveHash);
             var websiteHash = Console.ReadLine();
             Console.Write("\n");
+            
             return websiteHash.Replace(" ", "");
         }
 
         // Reads the filepath and creates a filestream
         private static FileStream GetFileStream()
-        {
+        {            
             FileStream fileStream = null;
             Console.WriteLine("{0}", language.GivePath);
             var fileReadable = false;
@@ -113,23 +114,23 @@ namespace HashCompare
                 switch (method.Replace(" ", ""))
                 {
                     case "MD5":
-                        hash = Hash.StreamToHash(MD5.Create(), fileStream);
+                        hash = Hash.GetHashAsString(MD5.Create(), fileStream);
                         correctMethod = true;
                         break;
                     case "SHA-1":
-                        hash = Hash.StreamToHash(SHA1.Create(), fileStream);
+                        hash = Hash.GetHashAsString(SHA1.Create(), fileStream);
                         correctMethod = true;
                         break;
                     case "SHA-256":
-                        hash = Hash.StreamToHash(SHA256.Create(), fileStream);
+                        hash = Hash.GetHashAsString(SHA256.Create(), fileStream);
                         correctMethod = true;
                         break;
                     case "SHA-384":
-                        hash = Hash.StreamToHash(SHA384.Create(), fileStream);
+                        hash = Hash.GetHashAsString(SHA384.Create(), fileStream);
                         correctMethod = true;
                         break;
                     case "SHA-512":
-                        hash = Hash.StreamToHash(SHA512.Create(), fileStream);
+                        hash = Hash.GetHashAsString(SHA512.Create(), fileStream);
                         correctMethod = true;
                         break;
                     default:
@@ -151,7 +152,7 @@ namespace HashCompare
         }
 
         // Compares the hash with the string from the website 
-        private static void ResultOfComparison(string websiteHash, string fileHash)
+        private static void CompareTheResult(string websiteHash, string fileHash)
         {
             Console.WriteLine("{0}:\t{1}\n{2}:\t{3}\n", language.WebsitheHash, websiteHash,
                 language.FileHash, fileHash);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HashCompare.Language
+namespace HashCompare.LanguageSelection
 {
     // author: Janno Tjarks (janno.tjarks@hotmail.de)
     // version: 1.0
@@ -10,7 +10,7 @@ namespace HashCompare.Language
     /// <summary>
     /// This class has all strings for the output in the console.
     /// </summary>
-    public class LanguageSelected
+    public class Language
     {
         #region private variables
         private string greeting = String.Empty;
