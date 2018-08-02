@@ -12,6 +12,7 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <Description>A little tool to compare the checksum of a downloaded file</Description>
     <PackageProjectUrl>https://github.com/JannoTjarks/HashCompare</PackageProjectUrl>
+    <RuntimeIdentifiers>win10-x64;osx.10.11-x64</RuntimeIdentifiers>
   </PropertyGroup>
 
   <ItemGroup>

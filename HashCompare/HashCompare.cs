@@ -115,23 +115,18 @@ namespace HashCompare
                 {
                     case "MD5":
                         hash = Hash.GetHashAsString(MD5.Create(), fileStream);
-                        correctMethod = true;
                         break;
                     case "SHA-1":
                         hash = Hash.GetHashAsString(SHA1.Create(), fileStream);
-                        correctMethod = true;
                         break;
                     case "SHA-256":
                         hash = Hash.GetHashAsString(SHA256.Create(), fileStream);
-                        correctMethod = true;
                         break;
                     case "SHA-384":
                         hash = Hash.GetHashAsString(SHA384.Create(), fileStream);
-                        correctMethod = true;
                         break;
                     case "SHA-512":
                         hash = Hash.GetHashAsString(SHA512.Create(), fileStream);
-                        correctMethod = true;
                         break;
                     default:
                         break;
@@ -171,7 +166,6 @@ namespace HashCompare
 
             Console.WriteLine("{0}", resultEnd);
             Console.ResetColor();
-
         }
 
         // Waits for a key and closes the application then. 
