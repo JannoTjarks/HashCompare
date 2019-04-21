@@ -130,13 +130,13 @@
     <value>Which hash-method do you want? (MD5, SHA-1, SHA-256, SHA-384, SHA-512)</value>
   </data>
   <data name="GivePath" xml:space="preserve">
-    <value>Give the path to the software:</value>
+    <value>Give the path to the file:</value>
   </data>
   <data name="Greeting" xml:space="preserve">
     <value>Hi!</value>
   </data>
   <data name="HashError" xml:space="preserve">
-    <value>The hash-input was faulty. Pls type it in again! (SHA-1, SHA-256, SHA-384, SHA-512)</value>
+    <value>The hash-input was faulty. Pls type it in again! (MD5, SHA-1, SHA-256, SHA-384, SHA-512)</value>
   </data>
   <data name="PathError" xml:space="preserve">
     <value>Path can't be read. Please input the path again!</value>

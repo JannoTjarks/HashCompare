@@ -97,7 +97,7 @@ namespace HashCompare.LanguagePack {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Give the path to the software: ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Give the path to the file: ähnelt.
         /// </summary>
         public static string GivePath {
             get {
@@ -115,7 +115,7 @@ namespace HashCompare.LanguagePack {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The hash-input was faulty. Pls type it in again! (SHA-1, SHA-256, SHA-384, SHA-512) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die The hash-input was faulty. Pls type it in again! (MD5, SHA-1, SHA-256, SHA-384, SHA-512) ähnelt.
         /// </summary>
         public static string HashError {
             get {

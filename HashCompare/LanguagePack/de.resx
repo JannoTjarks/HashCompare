@@ -136,7 +136,7 @@
     <value>Hallo!</value>
   </data>
   <data name="HashError" xml:space="preserve">
-    <value>Eingabe des Hash-Types ist fehlerhaft. Bitte nochmal eingeben! (SHA-1, SHA-256, SHA-384, SHA-512)</value>
+    <value>Eingabe des Hash-Types ist fehlerhaft. Bitte nochmal eingeben! (MD5, SHA-1, SHA-256, SHA-384, SHA-512)</value>
   </data>
   <data name="PathError" xml:space="preserve">
     <value>Es konnte nicht auf die Datei zugegriffen werden! Geben sie den Dataipfad erneut ein:</value>

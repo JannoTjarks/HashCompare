@@ -115,7 +115,7 @@ namespace HashCompare.LanguagePack {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Eingabe des Hash-Types ist fehlerhaft. Bitte nochmal eingeben! (SHA-1, SHA-256, SHA-384, SHA-512) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Eingabe des Hash-Types ist fehlerhaft. Bitte nochmal eingeben! (MD5, SHA-1, SHA-256, SHA-384, SHA-512) ähnelt.
         /// </summary>
         public static string HashError {
             get {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography;
+using McMaster.Extensions.CommandLineUtils;
 using HashCompare.LanguageSelection;
 
 namespace HashCompare
@@ -21,96 +22,156 @@ namespace HashCompare
 
         #region methods
         // Main-method
-        private static void Main(string[] args)
+        private static int Main(string[] args)
         {
-            // Get Language
-            GetLanguage(args);
+            var app = new CommandLineApplication();
+            app.HelpOption("-?|--help");
+            var argumentLanguage = app.Option("-l|--language <string>", 
+                "The selected language package. English (en), German (de) and " +
+                "Low German (platt) are available.", CommandOptionType.SingleValue);
+            var argumentHashFromWebsite = app.Option("-h|--hash <string>", 
+                "The Hash-Value that the download-site is calling.", 
+                CommandOptionType.SingleValue);
+            var argumentFile = app.Option("-f|--file <string>", "Path to the " +
+                "downloaded file.", CommandOptionType.SingleValue);            
+            var argumentHashMethod = app.Option("-m|--hashmethod <string>", 
+                "The wanted hash-method (MD5, SHA-1, SHA-256, SHA-384, " +
+                "SHA-512).", CommandOptionType.SingleValue);
 
-            // Write Greeting
-            Greet();
-
-            // Get Hash from the website
-            var websiteHash = GetHashFromWebsite();
-
-            // Reading the file
-            var fileStream = GetFileStream();
-
-            // Get Hash from File
-            var fileHash = GetHashFromFile(fileStream);
-
-            // Show result of comparison
-            CompareTheResult(websiteHash, fileHash);
-
-            // Close the application
-            Close();
-        }
-
-        // Reads the start arguments and loads a language package
-        private static void GetLanguage(string[] args)
-        {            
-            // Check arguments
-            if (args.Length == 1)
+            app.OnExecute(() =>
             {
-                language = LanguageReader.Read(args[0]);
-            }
-            else
-            {
-                language = LanguageReader.Read(null);
-            }
-        }
+                // Get language argument and and loads a language package
+                string languageValue = argumentLanguage.HasValue() ? argumentLanguage.Value() : "en";
+                language = LanguageReader.Read(languageValue);
+                
+                // Write Greeting
+                Greet();
+
+                // Get the hash-value argument
+                string websiteHash = argumentHashFromWebsite.HasValue() ? argumentHashFromWebsite.Value() : GetHashFromWebsite();
+
+                // Get the file-location argument
+                string fileLocation = argumentFile.HasValue() ? argumentFile.Value() : GetFileLocation();
+                
+                // Get the hash-method argument
+                string hashMethod = argumentHashMethod.HasValue() ? argumentHashMethod.Value() : GetHashMethod();                                                           
+
+                // Get Hash from File
+                var fileHash = GetHashFromFile(hashMethod, GetFileStream(fileLocation));
+
+                // Show result of comparison
+                CompareTheResult(websiteHash, fileHash);
+
+                // Close the application
+                Close();
+
+                return 0;
+            });
+
+            // TODO Fehlerabfangen, falls ein ungueltiger Parameter eingegeben wird
+            return app.Execute(args);            
+        }                
 
         // Writes a greeting
         private static void Greet()
         {
             Console.WriteLine("{0}", language.Greeting);
+            Console.Write("\n");
         }
 
         // Reads the Hash from the website and removes the blank
         private static string GetHashFromWebsite()
         {
-            Console.WriteLine("\n{0}", language.GiveHash);
+            Console.WriteLine("{0}", language.GiveHash);
             var websiteHash = Console.ReadLine();
             Console.Write("\n");
             
             return websiteHash.Replace(" ", "");
         }
 
-        // Reads the filepath and creates a filestream
-        private static FileStream GetFileStream()
+        // Reads the filepath
+        private static string GetFileLocation()
         {            
-            FileStream fileStream = null;
             Console.WriteLine("{0}", language.GivePath);
+            string fileLocation = Console.ReadLine();
+            Console.Write("\n");
+
+            return fileLocation;
+        }
+
+        // Creates a filestream
+        private static FileStream GetFileStream(string fileLocation)
+        {            
+            FileStream fileStream = null;            
             var fileReadable = false;
             while (!fileReadable)
             {
                 try
-                {
-                    var path = String.Empty;
-                    path = Console.ReadLine();
-
-                    var file = new FileInfo(path);
+                {                    
+                    var file = new FileInfo(fileLocation);
                     fileStream = file.Open(FileMode.Open);
                     fileReadable = true;
-                    Console.Write("\n");
                 }
                 catch
                 {
-                    Console.WriteLine("\n{0}", language.PathError);
+                    Console.WriteLine("{0}", language.PathError);
+                    fileLocation = Console.ReadLine();
+                    Console.Write("\n");
                 }
             }            
 
             return fileStream;
         }
 
-        // Reads hash method and returns the hash as string
-        private static string GetHashFromFile(FileStream fileStream)
+        // Reads hash method
+        private static string GetHashMethod()
         {
             Console.WriteLine("{0}", language.GiveHashMethod);
-            var hash = String.Empty;
+            var method = String.Empty;
             var correctMethod = false;
             while (!correctMethod)
             {
-                var method = Console.ReadLine();
+                method = Console.ReadLine();
+                switch (method.Replace(" ", ""))
+                {
+                    case "MD5":
+                        correctMethod = true;
+                        break;
+                    case "SHA-1":
+                        correctMethod = true;
+                        break;
+                    case "SHA-256":
+                        correctMethod = true;
+                        break;
+                    case "SHA-384":
+                        correctMethod = true;
+                        break;
+                    case "SHA-512":
+                        correctMethod = true;
+                        break;
+                    default:
+                        break;
+                }
+
+                Console.Write("\n");
+
+                if (!correctMethod)
+                {
+                    Console.WriteLine("{0}", language.HashError);
+                    Console.Write("\n");
+                }
+            }
+
+            return method;
+        }
+
+        // Returns the hash as string
+        private static string GetHashFromFile(string method, FileStream fileStream)
+        {            
+            var hash = String.Empty;
+            var correctMethod = false;
+            while (!correctMethod)
+            {                
                 switch (method.Replace(" ", ""))
                 {
                     case "MD5":
@@ -135,12 +196,13 @@ namespace HashCompare
                 if (hash != String.Empty)
                 {
                     correctMethod = true;
-                    Console.Write("\n");
                 }
                 else
                 {
-                    Console.WriteLine("\n{0}", language.HashError);
-                }
+                    Console.WriteLine("{0}", language.HashError);
+                    method = Console.ReadLine();
+                    Console.Write("\n");
+                }                
             }
 
             return hash;
