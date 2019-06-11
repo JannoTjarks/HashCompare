@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HashCompare.LanguagePack {
+namespace HashCompareLib.LanguagePack {
     using System;
     
     
@@ -19,27 +19,27 @@ namespace HashCompare.LanguagePack {
     // -Klasse über ein Tool wie ResGen oder Visual Studio automatisch generiert.
     // Um einen Member hinzuzufügen oder zu entfernen, bearbeiten Sie die .ResX-Datei und führen dann ResGen
     // mit der /str-Option erneut aus, oder Sie erstellen Ihr VS-Projekt neu.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class en {
+    internal class platt {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal en() {
+        internal platt() {
         }
         
         /// <summary>
         ///   Gibt die zwischengespeicherte ResourceManager-Instanz zurück, die von dieser Klasse verwendet wird.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HashCompare.LanguagePack.en", typeof(en).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HashCompareLib.LanguagePack.platt", typeof(platt).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace HashCompare.LanguagePack {
         ///   Ressourcenzuordnungen, die diese stark typisierte Ressourcenklasse verwenden.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,108 +61,117 @@ namespace HashCompare.LanguagePack {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Press any key to exit... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Drück enn van all de Knopen up Tastbreed um uptohollen... ähnelt.
         /// </summary>
-        public static string Close {
+        internal static string Close {
             get {
                 return ResourceManager.GetString("Close", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Hash of the file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Hash van de Datei ähnelt.
         /// </summary>
-        public static string FileHash {
+        internal static string FileHash {
             get {
                 return ResourceManager.GetString("FileHash", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die What&apos;s the Hash-Value that the download-site is calling? ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Wat is de Hash von de Internet-Sied? ähnelt.
         /// </summary>
-        public static string GiveHash {
+        internal static string GiveHash {
             get {
                 return ResourceManager.GetString("GiveHash", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Which hash-method do you want? (MD5, SHA-1, SHA-256, SHA-384, SHA-512) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Wat för een Hash-Methood brukst du? (MD5, SHA-1, SHA-256, SHA-384, SHA-512) ähnelt.
         /// </summary>
-        public static string GiveHashMethod {
+        internal static string GiveHashMethod {
             get {
                 return ResourceManager.GetString("GiveHashMethod", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Give the path to the file: ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Wo liggt de Datei? ähnelt.
         /// </summary>
-        public static string GivePath {
+        internal static string GivePath {
             get {
                 return ResourceManager.GetString("GivePath", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Hi! ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Moin! ähnelt.
         /// </summary>
-        public static string Greeting {
+        internal static string Greeting {
             get {
                 return ResourceManager.GetString("Greeting", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The hash-input was faulty. Pls type it in again! (MD5, SHA-1, SHA-256, SHA-384, SHA-512) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Daar is woll ein Malöör passiert. Gev de Method gliek noch maal an! (MD5, SHA-1, SHA-256, SHA-384, SHA-512) ähnelt.
         /// </summary>
-        public static string HashError {
+        internal static string HashError {
             get {
                 return ResourceManager.GetString("HashError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Path can&apos;t be read. Please input the path again! ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Daar is woll ein Versehn passiert. Mak dat gliek noch maal! ähnelt.
         /// </summary>
-        public static string PathError {
+        internal static string PathError {
             get {
                 return ResourceManager.GetString("PathError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The hashs are  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die De Hashes sünd  ähnelt.
         /// </summary>
-        public static string ResultBegin {
+        internal static string ResultBegin {
             get {
                 return ResourceManager.GetString("ResultBegin", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die differently! ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die verscheden! ähnelt.
         /// </summary>
-        public static string ResultEndNegativ {
+        internal static string ResultEndNegativ {
             get {
                 return ResourceManager.GetString("ResultEndNegativ", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die identical! ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die gliek! ähnelt.
         /// </summary>
-        public static string ResultEndPositiv {
+        internal static string ResultEndPositiv {
             get {
                 return ResourceManager.GetString("ResultEndPositiv", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Hash from the website ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frömd Argument! ähnelt.
         /// </summary>
-        public static string WebsiteHash {
+        internal static string UnrecognizedOption {
+            get {
+                return ResourceManager.GetString("UnrecognizedOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Hash ut de Internet ähnelt.
+        /// </summary>
+        internal static string WebsiteHash {
             get {
                 return ResourceManager.GetString("WebsiteHash", resourceCulture);
             }

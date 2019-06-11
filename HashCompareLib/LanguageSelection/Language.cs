@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HashCompare.LanguageSelection
+namespace HashCompareLib.LanguageSelection
 {
     // author: Janno Tjarks (janno.tjarks@hotmail.de)
     // version: 1.0
@@ -13,6 +13,7 @@ namespace HashCompare.LanguageSelection
     public class Language
     {
         #region private variables
+        private string unrecognizedOption = String.Empty;
         private string greeting = String.Empty;
         private string giveHash = String.Empty;
         private string givePath = String.Empty;
@@ -29,6 +30,7 @@ namespace HashCompare.LanguageSelection
         #endregion
 
         #region Getter and Setter
+        public string UnrecognizedOption { get => this.unrecognizedOption; set => this.unrecognizedOption = value; }
         public string Greeting { get => greeting; set => greeting = value; }
         public string GiveHash { get => giveHash; set => giveHash = value; }
         public string GivePath { get => givePath; set => givePath = value; }
@@ -40,7 +42,7 @@ namespace HashCompare.LanguageSelection
         public string ResultBegin { get => resultBegin; set => resultBegin = value; }
         public string ResultEndPositiv { get => resultEndPositiv; set => resultEndPositiv = value; }
         public string ResultEndNegativ { get => resultEndNegativ; set => resultEndNegativ = value; }
-        public string Close { get => close; set => close = value; }               
+        public string Close { get => close; set => close = value; }        
 
         #endregion
     }

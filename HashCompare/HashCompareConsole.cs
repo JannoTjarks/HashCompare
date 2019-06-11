@@ -2,20 +2,18 @@
 using System.IO;
 using System.Security.Cryptography;
 using McMaster.Extensions.CommandLineUtils;
-using HashCompare.LanguageSelection;
+using HashCompareLib.LanguageSelection;
+using HashCompareLib.LanguagePack;
 
-namespace HashCompare
+namespace HashCompareLib
 {
-    // author: Janno Tjarks (janno.tjarks@hotmail.de)
-    // version: 1.0
-    // date: 2018-04-14
     /// <summary>
     /// This is the main class and performs all inputs and outputs.
     /// </summary>
     public class HashCompare
     {
         #region private variables        
-        // Declaration Language        
+        // Declaration Language        v
         private static Language language = null;
 
         #endregion
@@ -24,20 +22,29 @@ namespace HashCompare
         // Main-method
         private static int Main(string[] args)
         {
+            // Define String for app-Option.
+            var argumentLanguageString = "The selected language package. " +
+                "English (en), German (de) and Low German (platt) are " +
+                "available.";
+            var argumentHashFromWebsiteString = "The Hash-Value that the " +
+                "download-site is calling.";
+            var argumentFileString = "Path to the downloaded file.";
+            var argumentHashMethodString = "The wanted hash-method (MD5, " +
+                "SHA-1, SHA-256, SHA-384, SHA-512).";
+
+            // Define CommandLineApplication
             var app = new CommandLineApplication();
             app.HelpOption("-?|--help");
             var argumentLanguage = app.Option("-l|--language <string>", 
-                "The selected language package. English (en), German (de) and " +
-                "Low German (platt) are available.", CommandOptionType.SingleValue);
+                argumentLanguageString, CommandOptionType.SingleValue);
             var argumentHashFromWebsite = app.Option("-h|--hash <string>", 
-                "The Hash-Value that the download-site is calling.", 
-                CommandOptionType.SingleValue);
-            var argumentFile = app.Option("-f|--file <string>", "Path to the " +
-                "downloaded file.", CommandOptionType.SingleValue);            
+                argumentHashFromWebsiteString, CommandOptionType.SingleValue);
+            var argumentFile = app.Option("-f|--file <string>", 
+                argumentFileString, CommandOptionType.SingleValue);            
             var argumentHashMethod = app.Option("-m|--hashmethod <string>", 
-                "The wanted hash-method (MD5, SHA-1, SHA-256, SHA-384, " +
-                "SHA-512).", CommandOptionType.SingleValue);
+                argumentHashMethodString, CommandOptionType.SingleValue);
 
+            // Start CommandLineApplication
             app.OnExecute(() =>
             {
                 // Get language argument and and loads a language package
@@ -67,10 +74,18 @@ namespace HashCompare
 
                 return 0;
             });
+            
+            try
+            {
+                return app.Execute(args);
+            }
+            catch (UnrecognizedCommandParsingException)
+            {
+                Console.WriteLine("{0}", en.UnrecognizedOption);                
+                return 0;
+            }
 
-            // TODO Fehlerabfangen, falls ein ungueltiger Parameter eingegeben wird
-            return app.Execute(args);            
-        }                
+        }
 
         // Writes a greeting
         private static void Greet()

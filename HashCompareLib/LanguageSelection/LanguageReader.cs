@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
-using HashCompare.LanguagePack;
+using HashCompareLib.LanguagePack;
 
-namespace HashCompare.LanguageSelection
+namespace HashCompareLib.LanguageSelection
 {
     // author: Janno Tjarks (janno.tjarks@hotmail.de)
     // version: 1.0
@@ -15,9 +15,10 @@ namespace HashCompare.LanguageSelection
         {
             #region methods
             if (languageId == "de" || CultureInfo.CurrentCulture.ToString() == "de-DE" && languageId == null)
-            {                
+            {
                 var language = new Language
-                {                    
+                {
+                    UnrecognizedOption = de.UnrecognizedOption,
                     Greeting = de.Greeting,
                     GiveHash = de.GiveHash,
                     GivePath = de.GivePath,
@@ -38,6 +39,7 @@ namespace HashCompare.LanguageSelection
             {
                 var language = new Language
                 {
+                    UnrecognizedOption = platt.UnrecognizedOption,
                     Greeting = platt.Greeting,
                     GiveHash = platt.GiveHash,
                     GivePath = platt.GivePath,
@@ -58,6 +60,7 @@ namespace HashCompare.LanguageSelection
             {
                 var language = new Language
                 {
+                    UnrecognizedOption = en.UnrecognizedOption,
                     Greeting = en.Greeting,
                     GiveHash = en.GiveHash,
                     GivePath = en.GivePath,

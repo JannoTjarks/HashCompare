@@ -1,7 +1,8 @@
 {
   "profiles": {
     "HashCompare": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "-küäöü"
     }
   }
 }

@@ -20,25 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HashCompareLib\HashCompareLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="en.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>en.resx</DependentUpon>
-    </Compile>
-    <Compile Update="LanguagePack\de.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>de.resx</DependentUpon>
-    </Compile>
-    <Compile Update="LanguagePack\en.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>en.resx</DependentUpon>
-    </Compile>
-    <Compile Update="LanguagePack\platt.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>platt.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -46,18 +35,6 @@
     <EmbeddedResource Update="en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>en.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="LanguagePack\de.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>de.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="LanguagePack\en.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>en.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="LanguagePack\platt.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>platt.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Security.Cryptography;
 
-namespace HashCompare
+namespace HashCompareLib
 {
     // author: Janno Tjarks (janno.tjarks@hotmail.de)
     // version: 1.0
@@ -10,7 +10,7 @@ namespace HashCompare
     /// <summary>
     /// This class performs all tasks concerning the hashing.
     /// </summary>
-    static class Hash
+    public static class Hash
     {
         #region methods
         // Hash the stream with the chosen hash-method with the given method

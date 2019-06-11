@@ -150,6 +150,9 @@
   <data name="ResultEndPositiv" xml:space="preserve">
     <value>identisch!</value>
   </data>
+  <data name="UnrecognizedOption" xml:space="preserve">
+    <value>Unbekannter Parameter!</value>
+  </data>
   <data name="WebsiteHash" xml:space="preserve">
     <value>Hash von der Webseite</value>
   </data>
