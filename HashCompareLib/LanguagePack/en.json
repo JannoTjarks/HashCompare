@@ -1,0 +1,15 @@
+{
+  "Close": "Press any key to exit...",
+  "FileHash": "Hash of the file",
+  "GiveHash": "What's the Hash-Value that the download-site is calling?",
+  "GiveHashMethod": "Which hash-method do you want? (MD5, SHA-1, SHA-256, SHA-384, SHA-512)",
+  "GivePath": "Give the path to the file:",
+  "Greeting": "Hi!",
+  "HashError": "The hash-input was faulty. Pls type it in again! (MD5, SHA-1, SHA-256, SHA-384, SHA-512)",
+  "PathError": "Path can't be read. Please input the path again!",
+  "ResultBegin": "The hashs are ",
+  "ResultEndNegativ": "differently!",
+  "ResultEndPositiv": "identical!",
+  "UnrecognizedOption": "Unrecognized option!",
+  "WebsiteHash": "Hash from the website"
+}

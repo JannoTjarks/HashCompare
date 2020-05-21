@@ -1,11 +1,12 @@
 ﻿using System.Globalization;
-using HashCompareLib.LanguagePack;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace HashCompareLib.LanguageSelection
 {
     // author: Janno Tjarks (janno.tjarks@hotmail.de)
-    // version: 1.0
-    // date: 2018-04-14
+    // version: 2.0
+    // date: 2019-05-22
     /// <summary>
     /// This class sets all strings for the output.
     /// </summary>
@@ -13,72 +14,18 @@ namespace HashCompareLib.LanguageSelection
     {
         public static Language Read(string languageId)
         {
-            #region methods
             if (languageId == "de" || CultureInfo.CurrentCulture.ToString() == "de-DE" && languageId == null)
             {
-                var language = new Language
-                {
-                    UnrecognizedOption = de.UnrecognizedOption,
-                    Greeting = de.Greeting,
-                    GiveHash = de.GiveHash,
-                    GivePath = de.GivePath,
-                    PathError = de.PathError,
-                    GiveHashMethod = de.GiveHashMethod,
-                    HashError = de.HashError,
-                    WebsitheHash = de.WebsiteHash,
-                    FileHash = de.FileHash,
-                    ResultBegin = de.ResultBegin,
-                    ResultEndPositiv = de.ResultEndPositiv,
-                    ResultEndNegativ = de.ResultEndNegativ,
-                    Close = de.Close
-                };
-
-                return language;
+                return JsonConvert.DeserializeObject<Language>(File.ReadAllText(@"C:\Users\Janno\OneDrive\Programmierung\HashCompare\HashCompareLib\LanguagePack\de.json")); ; ;
             }
             else if (languageId == "platt")
             {
-                var language = new Language
-                {
-                    UnrecognizedOption = platt.UnrecognizedOption,
-                    Greeting = platt.Greeting,
-                    GiveHash = platt.GiveHash,
-                    GivePath = platt.GivePath,
-                    PathError = platt.PathError,
-                    GiveHashMethod = platt.GiveHashMethod,
-                    HashError = platt.HashError,
-                    WebsitheHash = platt.WebsiteHash,
-                    FileHash = platt.FileHash,
-                    ResultBegin = platt.ResultBegin,
-                    ResultEndPositiv = platt.ResultEndPositiv,
-                    ResultEndNegativ = platt.ResultEndNegativ,
-                    Close = platt.Close
-                };
-
-                return language;
+                return JsonConvert.DeserializeObject<Language>(File.ReadAllText(@"C:\Users\Janno\OneDrive\Programmierung\HashCompare\HashCompareLib\LanguagePack\platt.json")); ;
             }
             else
-            {
-                var language = new Language
-                {
-                    UnrecognizedOption = en.UnrecognizedOption,
-                    Greeting = en.Greeting,
-                    GiveHash = en.GiveHash,
-                    GivePath = en.GivePath,
-                    PathError = en.PathError,
-                    GiveHashMethod = en.GiveHashMethod,
-                    HashError = en.HashError,
-                    WebsitheHash = en.WebsiteHash,
-                    FileHash = en.FileHash,
-                    ResultBegin = en.ResultBegin,
-                    ResultEndPositiv = en.ResultEndPositiv,
-                    ResultEndNegativ = en.ResultEndNegativ,
-                    Close = en.Close
-                };
-
-                return language;
+            {                
+                return JsonConvert.DeserializeObject<Language>(File.ReadAllText(@"C:\Users\Janno\OneDrive\Programmierung\HashCompare\HashCompareLib\LanguagePack\en.json")); ;
             }
-
-            #endregion
         }
     }
 }

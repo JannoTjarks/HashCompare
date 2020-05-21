@@ -1,0 +1,15 @@
+{
+  "Close": "Drück enn van all de Knopen up Tastbreed um uptohollen...",
+  "FileHash": "Hash van de Datei",
+  "GiveHash": "Wat is de Hash von de Internet-Sied?",
+  "GiveHashMethod": "Wat för een Hash-Methood brukst du? (MD5, SHA-1, SHA-256, SHA-384, SHA-512)",
+  "GivePath": "Wo liggt de Datei?",
+  "Greeting": "Moin!",
+  "HashError": "Daar is woll ein Malöör passiert. Gev de Method gliek noch maal an! (MD5, SHA-1, SHA-256, SHA-384, SHA-512)",
+  "PathError": "Daar is woll ein Versehn passiert. Mak dat gliek noch maal!",
+  "ResultBegin": "De Hashes sünd ",
+  "ResultEndNegativ": "verscheden!",
+  "ResultEndPositiv": "gliek!",
+  "UnrecognizedOption": "Frömd Argument!",
+  "WebsiteHash": "Hash ut de Internet"
+}

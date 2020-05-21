@@ -1,0 +1,15 @@
+{
+  "Close": "Beliebige Taste zum Beenden...",
+  "FileHash": "Hash von der Datei",
+  "GiveHash": "Wie lautet der Hashwert, den die Download-Seite nennt?",
+  "GiveHashMethod": "Um welches Hashverfahren handelt es sich? (MD5, SHA-1, SHA-256, SHA-384, SHA-512)",
+  "GivePath": "Geben sie den Dateipfad ein:",
+  "Greeting": "Hallo!",
+  "HashError": "Eingabe des Hash-Types ist fehlerhaft. Bitte nochmal eingeben! (MD5, SHA-1, SHA-256, SHA-384, SHA-512)",
+  "PathError": "Es konnte nicht auf die Datei zugegriffen werden! Geben sie den Dataipfad erneut ein:",
+  "ResultBegin": "Die Hashes sind ",
+  "ResultEndNegativ": "unterschiedlich!",
+  "ResultEndPositiv": "identisch!",
+  "UnrecognizedOption": "Unbekannter Parameter!",
+  "WebsiteHash": "Hash von der Webseite"
+}

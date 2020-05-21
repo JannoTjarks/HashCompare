@@ -3,7 +3,6 @@ using System.IO;
 using System.Security.Cryptography;
 using McMaster.Extensions.CommandLineUtils;
 using HashCompareLib.LanguageSelection;
-using HashCompareLib.LanguagePack;
 
 namespace HashCompareLib
 {
@@ -46,22 +45,22 @@ namespace HashCompareLib
 
             // Start CommandLineApplication
             app.OnExecute(() =>
-            {
+            {                
                 // Get language argument and and loads a language package
-                string languageValue = argumentLanguage.HasValue() ? argumentLanguage.Value() : "en";
+                var languageValue = argumentLanguage.HasValue() ? argumentLanguage.Value() : "en";
                 language = LanguageReader.Read(languageValue);
                 
                 // Write Greeting
                 Greet();
 
                 // Get the hash-value argument
-                string websiteHash = argumentHashFromWebsite.HasValue() ? argumentHashFromWebsite.Value() : GetHashFromWebsite();
+                var websiteHash = argumentHashFromWebsite.HasValue() ? argumentHashFromWebsite.Value() : GetHashFromWebsite();
 
                 // Get the file-location argument
-                string fileLocation = argumentFile.HasValue() ? argumentFile.Value() : GetFileLocation();
+                var fileLocation = argumentFile.HasValue() ? argumentFile.Value() : GetFileLocation();
                 
                 // Get the hash-method argument
-                string hashMethod = argumentHashMethod.HasValue() ? argumentHashMethod.Value() : GetHashMethod();                                                           
+                var hashMethod = argumentHashMethod.HasValue() ? argumentHashMethod.Value() : GetHashMethod();                                                           
 
                 // Get Hash from File
                 var fileHash = GetHashFromFile(hashMethod, GetFileStream(fileLocation));
@@ -81,7 +80,7 @@ namespace HashCompareLib
             }
             catch (UnrecognizedCommandParsingException)
             {
-                Console.WriteLine("{0}", en.UnrecognizedOption);                
+                Console.WriteLine("{0}", language.UnrecognizedOption);                
                 return 0;
             }
 
@@ -146,7 +145,7 @@ namespace HashCompareLib
             var correctMethod = false;
             while (!correctMethod)
             {
-                method = Console.ReadLine();
+                method = Console.ReadLine();                
                 switch (method.Replace(" ", ""))
                 {
                     case "MD5":
