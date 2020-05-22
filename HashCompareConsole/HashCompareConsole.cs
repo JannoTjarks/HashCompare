@@ -10,14 +10,10 @@ namespace HashCompareLib
     /// This is the main class and performs all inputs and outputs.
     /// </summary>
     public class HashCompare
-    {
-        #region private variables        
-        // Declaration Language        v
-        private static Language language = null;
+    {  
+        // Declaration Language        
+        private static Language language = null;        
 
-        #endregion
-
-        #region methods
         // Main-method
         private static int Main(string[] args)
         {
@@ -146,25 +142,9 @@ namespace HashCompareLib
             while (!correctMethod)
             {
                 method = Console.ReadLine();                
-                switch (method.Replace(" ", ""))
-                {
-                    case "MD5":
-                        correctMethod = true;
-                        break;
-                    case "SHA-1":
-                        correctMethod = true;
-                        break;
-                    case "SHA-256":
-                        correctMethod = true;
-                        break;
-                    case "SHA-384":
-                        correctMethod = true;
-                        break;
-                    case "SHA-512":
-                        correctMethod = true;
-                        break;
-                    default:
-                        break;
+                if(Hash.HashMethods.Contains(method.Replace(" ", "")))
+                {                    
+                    correctMethod = true;                     
                 }
 
                 Console.Write("\n");
@@ -183,31 +163,13 @@ namespace HashCompareLib
         private static string GetHashFromFile(string method, FileStream fileStream)
         {            
             var hash = String.Empty;
+            HashAlgorithm hashAlgorithm = null;
             var correctMethod = false;
             while (!correctMethod)
-            {                
-                switch (method.Replace(" ", ""))
-                {
-                    case "MD5":
-                        hash = Hash.GetHashAsString(MD5.Create(), fileStream);
-                        break;
-                    case "SHA-1":
-                        hash = Hash.GetHashAsString(SHA1.Create(), fileStream);
-                        break;
-                    case "SHA-256":
-                        hash = Hash.GetHashAsString(SHA256.Create(), fileStream);
-                        break;
-                    case "SHA-384":
-                        hash = Hash.GetHashAsString(SHA384.Create(), fileStream);
-                        break;
-                    case "SHA-512":
-                        hash = Hash.GetHashAsString(SHA512.Create(), fileStream);
-                        break;
-                    default:
-                        break;
-                }
+            {
+                hashAlgorithm = Hash.GetHashAlgorithm(method.Replace(" ", ""));
 
-                if (hash != String.Empty)
+                if (hashAlgorithm != null)
                 {
                     correctMethod = true;
                 }
@@ -219,13 +181,13 @@ namespace HashCompareLib
                 }                
             }
 
-            return hash;
+            return Hash.GetHashAsString(hashAlgorithm, fileStream); ;
         }
 
         // Compares the hash with the string from the website 
         private static void CompareTheResult(string websiteHash, string fileHash)
         {
-            Console.WriteLine("{0}:\t{1}\n{2}:\t{3}\n", language.WebsitheHash, websiteHash,
+            Console.WriteLine("{0}:\t{1}\n{2}:\t{3}\n", language.WebsiteHash, websiteHash,
                 language.FileHash, fileHash);
             Console.Write("{0}", language.ResultBegin);
             var resultEnd = String.Empty;
@@ -250,7 +212,6 @@ namespace HashCompareLib
             Console.WriteLine("\n{0}", language.Close);
             Console.ReadKey(true);
         }
-
-        #endregion
+        
     }
 }
