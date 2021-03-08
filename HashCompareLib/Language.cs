@@ -1,15 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.IO;
 
-namespace HashCompareLib.LanguageSelection
+namespace HashCompareLib
 {
-    // author: Janno Tjarks (janno.tjarks@hotmail.de)
-    // version: 1.0
-    // date: 2018-04-14
-    /// <summary>
-    /// This class has all strings for the output in the console.
-    /// </summary>
     public class Language
-    {
+    {        
         private string unrecognizedOption = String.Empty;
         private string greeting = String.Empty;
         private string giveHash = String.Empty;
@@ -23,8 +19,9 @@ namespace HashCompareLib.LanguageSelection
         private string resultEndPositiv = String.Empty;
         private string resultEndNegativ = String.Empty;
         private string close = String.Empty;
+        private static Language instance;        
 
-        public string UnrecognizedOption { get => this.unrecognizedOption; set => this.unrecognizedOption = value; }
+        public string UnrecognizedOption { get => unrecognizedOption; set => unrecognizedOption = value; }
         public string Greeting { get => greeting; set => greeting = value; }
         public string GiveHash { get => giveHash; set => giveHash = value; }
         public string GivePath { get => givePath; set => givePath = value; }
@@ -36,6 +33,30 @@ namespace HashCompareLib.LanguageSelection
         public string ResultBegin { get => resultBegin; set => resultBegin = value; }
         public string ResultEndPositiv { get => resultEndPositiv; set => resultEndPositiv = value; }
         public string ResultEndNegativ { get => resultEndNegativ; set => resultEndNegativ = value; }
-        public string Close { get => close; set => close = value; }        
+        public string Close { get => close; set => close = value; }
+
+        // Singelton
+        public static Language Instance(string languageId)
+        {
+            if (instance == null)
+            {
+                if (languageId == "de")
+                {
+                    instance = JsonConvert.DeserializeObject<Language>(File.ReadAllText(@"C:\Users\Janno\OneDrive\Programmierung\HashCompare\HashCompareLib\LanguagePack\de.json")); ; ;
+                }
+                else if (languageId == "platt")
+                {
+                    instance = JsonConvert.DeserializeObject<Language>(File.ReadAllText(@"C:\Users\Janno\OneDrive\Programmierung\HashCompare\HashCompareLib\LanguagePack\platt.json")); ;
+                }
+                else
+                {
+                    instance = JsonConvert.DeserializeObject<Language>(File.ReadAllText(@"C:\Users\Janno\OneDrive\Programmierung\HashCompare\HashCompareLib\LanguagePack\en.json")); ;
+                }
+
+                
+            }
+
+            return instance;
+        }
     }
 }

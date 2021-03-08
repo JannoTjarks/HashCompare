@@ -5,9 +5,6 @@ using System.Security.Cryptography;
 
 namespace HashCompareLib
 {
-    // author: Janno Tjarks (janno.tjarks@hotmail.de)
-    // version: 1.0
-    // date: 2020-05-22
     /// <summary>
     /// This class performs all tasks concerning the hashing.
     /// </summary>

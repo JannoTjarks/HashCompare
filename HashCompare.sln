@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HashCompareConsole", "HashCompareConsole\HashCompareConsole.csproj", "{13845D5B-5E5A-49F6-8ECE-40C8BE3E30CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashCompareLib", "HashCompareLib\HashCompareLib.csproj", "{9C214C3A-3F6F-4792-B215-E0715125653C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HashCompareLib", "HashCompareLib\HashCompareLib.csproj", "{9C214C3A-3F6F-4792-B215-E0715125653C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashCompareGUI", "HashCompareGUI\HashCompareGUI.csproj", "{D8399B4B-3606-4355-889F-E0E881D8BAA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9C214C3A-3F6F-4792-B215-E0715125653C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C214C3A-3F6F-4792-B215-E0715125653C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C214C3A-3F6F-4792-B215-E0715125653C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8399B4B-3606-4355-889F-E0E881D8BAA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8399B4B-3606-4355-889F-E0E881D8BAA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8399B4B-3606-4355-889F-E0E881D8BAA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8399B4B-3606-4355-889F-E0E881D8BAA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
